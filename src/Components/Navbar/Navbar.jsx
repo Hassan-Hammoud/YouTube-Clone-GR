@@ -1,11 +1,8 @@
 /** @format */
 
-import React from 'react';
-
 import './Navbar.css';
 import { assets } from '../../assets/assets';
-
-const Navbar = () => {
+const Navbar = ({ setSidebar }) => {
   return (
     <nav className='flex-div'>
       <div className='nav-left flex-div'>
@@ -13,6 +10,7 @@ const Navbar = () => {
           className='menu-icon'
           src={assets.menu_icon}
           alt='Menu Icon'
+          onClick={() => setSidebar((perv) => (perv === false ? true : false))}
         />
         <img
           src={assets.logo}
