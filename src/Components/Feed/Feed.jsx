@@ -1,13 +1,17 @@
 /** @format */
 
-import React from 'react';
-import './Feed.css';
+import { Link } from 'react-router-dom';
 import { assets } from '../../assets/assets';
+import './Feed.css';
 const Feed = () => {
   return (
     <div className='feed'>
       {/*  Start Feed 1  */}
-      <div className='card'>
+
+      <Link
+        to={`video/20/4521`}
+        className='card'
+      >
         <img
           src={assets.thumbnail1}
           alt='thumbnail1'
@@ -17,7 +21,7 @@ const Feed = () => {
         </h2>
         <h3>HassanTech</h3>
         <p>15k views &bull; 2 days ago</p>
-      </div>
+      </Link>
 
       {/*  Start Feed 2  */}
       <div className='card'>

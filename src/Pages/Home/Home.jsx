@@ -1,10 +1,8 @@
 /** @format */
 
-import React from 'react';
-
-import './Home.css';
-import Sidebar from '../../Components/Sidebar/Sidebar';
 import Feed from '../../Components/Feed/Feed';
+import Sidebar from '../../Components/Sidebar/Sidebar';
+import './Home.css';
 
 const Home = ({ sidebar }) => {
   return (
