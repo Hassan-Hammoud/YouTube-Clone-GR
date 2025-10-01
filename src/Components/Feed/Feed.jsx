@@ -1,221 +1,48 @@
 /** @format */
 
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { assets } from '../../assets/assets';
+// import { assets } from '../../assets/assets';
+import moment from 'moment/moment';
+import { API_KEY, value_converter } from '../../data';
+
 import './Feed.css';
-const Feed = () => {
+const Feed = ({ category }) => {
+  const [data, setData] = useState([]);
+  console.log('🚀 ~ fetchData ~ data:', data);
+  const fetchData = async () => {
+    const videoList_Url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&videoCategoryId=${category}&key=${API_KEY}`;
+    await fetch(videoList_Url)
+      .then((response) => response.json())
+      .then((data) => setData(data.items));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [category]);
+
   return (
     <div className='feed'>
-      {/*  Start Feed 1  */}
-
-      <Link
-        to={`video/20/4521`}
-        className='card'
-      >
-        <img
-          src={assets.thumbnail1}
-          alt='thumbnail1'
-        />
-        <h2>
-          Best channel to learn coding that help you to be a web developer
-        </h2>
-        <h3>HassanTech</h3>
-        <p>15k views &bull; 2 days ago</p>
-      </Link>
-
-      {/*  Start Feed 2  */}
-      <div className='card'>
-        <img
-          src={assets.thumbnail2}
-          alt='thumbnail2'
-        />
-        <h2>
-          Best channel to learn coding that help you to be a web developer
-        </h2>
-        <h3>HassanTech</h3>
-        <p>15k views &bull; 2 days ago</p>
-      </div>
-
-      {/*  Start Feed 3  */}
-      <div className='card'>
-        <img
-          src={assets.thumbnail3}
-          alt='thumbnail3'
-        />
-        <h2>
-          Best channel to learn coding that help you to be a web developer
-        </h2>
-        <h3>HassanTech</h3>
-        <p>15k views &bull; 2 days ago</p>
-      </div>
-
-      {/*  Start Feed 4  */}
-      <div className='card'>
-        <img
-          src={assets.thumbnail4}
-          alt='thumbnail4'
-        />
-        <h2>
-          Best channel to learn coding that help you to be a web developer
-        </h2>
-        <h3>HassanTech</h3>
-        <p>15k views &bull; 2 days ago</p>
-      </div>
-
-      {/*  Start Feed 5  */}
-      <div className='card'>
-        <img
-          src={assets.thumbnail5}
-          alt='thumbnail5'
-        />
-        <h2>
-          Best channel to learn coding that help you to be a web developer
-        </h2>
-        <h3>HassanTech</h3>
-        <p>15k views &bull; 2 days ago</p>
-      </div>
-
-      {/*  Start Feed 6  */}
-      <div className='card'>
-        <img
-          src={assets.thumbnail6}
-          alt='thumbnail6'
-        />
-        <h2>
-          Best channel to learn coding that help you to be a web developer
-        </h2>
-        <h3>HassanTech</h3>
-        <p>15k views &bull; 2 days ago</p>
-      </div>
-
-      {/*  Start Feed 7  */}
-      <div className='card'>
-        <img
-          src={assets.thumbnail7}
-          alt='thumbnail7'
-        />
-        <h2>
-          Best channel to learn coding that help you to be a web developer
-        </h2>
-        <h3>HassanTech</h3>
-        <p>15k views &bull; 2 days ago</p>
-      </div>
-
-      {/*  Start Feed 8  */}
-      <div className='card'>
-        <img
-          src={assets.thumbnail8}
-          alt='thumbnail8'
-        />
-        <h2>
-          Best channel to learn coding that help you to be a web developer
-        </h2>
-        <h3>HassanTech</h3>
-        <p>15k views &bull; 2 days ago</p>
-      </div>
-      {/*  Start Feed 1  */}
-      <div className='card'>
-        <img
-          src={assets.thumbnail1}
-          alt='thumbnail1'
-        />
-        <h2>
-          Best channel to learn coding that help you to be a web developer
-        </h2>
-        <h3>HassanTech</h3>
-        <p>15k views &bull; 2 days ago</p>
-      </div>
-
-      {/*  Start Feed 2  */}
-      <div className='card'>
-        <img
-          src={assets.thumbnail2}
-          alt='thumbnail2'
-        />
-        <h2>
-          Best channel to learn coding that help you to be a web developer
-        </h2>
-        <h3>HassanTech</h3>
-        <p>15k views &bull; 2 days ago</p>
-      </div>
-
-      {/*  Start Feed 3  */}
-      <div className='card'>
-        <img
-          src={assets.thumbnail3}
-          alt='thumbnail3'
-        />
-        <h2>
-          Best channel to learn coding that help you to be a web developer
-        </h2>
-        <h3>HassanTech</h3>
-        <p>15k views &bull; 2 days ago</p>
-      </div>
-
-      {/*  Start Feed 4  */}
-      <div className='card'>
-        <img
-          src={assets.thumbnail4}
-          alt='thumbnail4'
-        />
-        <h2>
-          Best channel to learn coding that help you to be a web developer
-        </h2>
-        <h3>HassanTech</h3>
-        <p>15k views &bull; 2 days ago</p>
-      </div>
-
-      {/*  Start Feed 5  */}
-      <div className='card'>
-        <img
-          src={assets.thumbnail5}
-          alt='thumbnail5'
-        />
-        <h2>
-          Best channel to learn coding that help you to be a web developer
-        </h2>
-        <h3>HassanTech</h3>
-        <p>15k views &bull; 2 days ago</p>
-      </div>
-
-      {/*  Start Feed 6  */}
-      <div className='card'>
-        <img
-          src={assets.thumbnail6}
-          alt='thumbnail6'
-        />
-        <h2>
-          Best channel to learn coding that help you to be a web developer
-        </h2>
-        <h3>HassanTech</h3>
-        <p>15k views &bull; 2 days ago</p>
-      </div>
-
-      {/*  Start Feed 7  */}
-      <div className='card'>
-        <img
-          src={assets.thumbnail7}
-          alt='thumbnail7'
-        />
-        <h2>
-          Best channel to learn coding that help you to be a web developer
-        </h2>
-        <h3>HassanTech</h3>
-        <p>15k views &bull; 2 days ago</p>
-      </div>
-
-      {/*  Start Feed 8  */}
-      <div className='card'>
-        <img
-          src={assets.thumbnail8}
-          alt='thumbnail8'
-        />
-        <h2>
-          Best channel to learn coding that help you to be a web developer
-        </h2>
-        <h3>HassanTech</h3>
-        <p>15k views &bull; 2 days ago</p>
-      </div>
+      {data.map((item, index) => {
+        return (
+          <Link
+            key={index}
+            to={`video/${item.snippet.categoryId}/${item.id}`}
+            className='card'
+          >
+            <img
+              src={item.snippet.thumbnails.medium.url}
+              alt='thumbnail1'
+            />
+            <h2>{item.snippet.title}</h2>
+            <h3>{item.snippet.channelTitle}</h3>
+            <p>
+              {value_converter(item.statistics.viewCount)} &bull;{' '}
+              {moment(item.snippet.publishedAt).fromNow()}
+            </p>
+          </Link>
+        );
+      })}
     </div>
   );
 };
