@@ -1,11 +1,14 @@
 /** @format */
 import moment from 'moment';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import { assets } from '../../assets/assets';
 import { API_KEY, value_converter } from '../../data';
 import './PlayVideo.css';
 
-const PlayVideo = ({ videoId }) => {
+const PlayVideo = () => {
+  const { videoId } = useParams();
+
   const [apiData, setApiData] = useState(null);
   const [channelData, setChannelData] = useState(null);
   const [commentData, setCommentData] = useState([]);
@@ -39,12 +42,11 @@ const PlayVideo = ({ videoId }) => {
 
   useEffect(() => {
     fetchVideoData();
-    fetchOtherData();
   }, [videoId]);
 
   useEffect(() => {
     fetchOtherData();
-  }, [apiData, videoId]);
+  }, [apiData]);
 
   return (
     <div className='play-video'>
@@ -144,7 +146,7 @@ const PlayVideo = ({ videoId }) => {
             >
               <img
                 src={item.snippet.topLevelComment.snippet.authorProfileImageUrl}
-                alt='User Profile Image'
+                alt='UserImg'
               />
               <div className=''>
                 <h3>
