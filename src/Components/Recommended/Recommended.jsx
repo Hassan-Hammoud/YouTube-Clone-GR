@@ -1,106 +1,42 @@
 /** @format */
 
-import { assets } from '../../assets/assets';
+import { useEffect, useState } from 'react';
+import { API_KEY, value_converter } from '../../data';
 import './Recommended.css';
-const Recommended = () => {
+const Recommended = ({ categoryId }) => {
+  const [apiData, setApiData] = useState([]);
+  console.log('🚀 ~ Recommended ~ apiData:', apiData);
+
+  const fetchData = async () => {
+    const relatedVideo_Url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=45&regionCode=US&videoCategoryId=${categoryId}&key=${API_KEY}`;
+    await fetch(relatedVideo_Url)
+      .then((res) => res.json())
+      .then((data) => setApiData(data.items));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [categoryId]);
   return (
     <div className='recommended'>
-      {/* Side List Video-1  */}
-      <div className='side-video-list'>
-        <img
-          src={assets.thumbnail1}
-          alt='Thumbnail1'
-        />
-        <div className='vid-info'>
-          <h4>Best Channel That Help You To Be A Web Developer</h4>
-          <p>HassanTech</p>
-          <p>199K Views</p>
-        </div>
-      </div>
-      {/* Side List Video-2  */}
-      <div className='side-video-list'>
-        <img
-          src={assets.thumbnail2}
-          alt='Thumbnail2'
-        />
-        <div className='vid-info'>
-          <h4>Best Channel That Help You To Be A Web Developer</h4>
-          <p>HassanTech</p>
-          <p>199K Views</p>
-        </div>
-      </div>
-      {/* Side List Video-3  */}
-      <div className='side-video-list'>
-        <img
-          src={assets.thumbnail3}
-          alt='Thumbnail3'
-        />
-        <div className='vid-info'>
-          <h4>Best Channel That Help You To Be A Web Developer</h4>
-          <p>HassanTech</p>
-          <p>199K Views</p>
-        </div>
-      </div>
-      {/* Side List Video-4  */}
-      <div className='side-video-list'>
-        <img
-          src={assets.thumbnail4}
-          alt='Thumbnail4'
-        />
-        <div className='vid-info'>
-          <h4>Best Channel That Help You To Be A Web Developer</h4>
-          <p>HassanTech</p>
-          <p>199K Views</p>
-        </div>
-      </div>
-      {/* Side List Video-5  */}
-      <div className='side-video-list'>
-        <img
-          src={assets.thumbnail5}
-          alt='Thumbnail5'
-        />
-        <div className='vid-info'>
-          <h4>Best Channel That Help You To Be A Web Developer</h4>
-          <p>HassanTech</p>
-          <p>199K Views</p>
-        </div>
-      </div>
-      {/* Side List Video-6  */}
-      <div className='side-video-list'>
-        <img
-          src={assets.thumbnail6}
-          alt='Thumbnail6'
-        />
-        <div className='vid-info'>
-          <h4>Best Channel That Help You To Be A Web Developer</h4>
-          <p>HassanTech</p>
-          <p>199K Views</p>
-        </div>
-      </div>
-      {/* Side List Video-7  */}
-      <div className='side-video-list'>
-        <img
-          src={assets.thumbnail7}
-          alt='Thumbnail7'
-        />
-        <div className='vid-info'>
-          <h4>Best Channel That Help You To Be A Web Developer</h4>
-          <p>HassanTech</p>
-          <p>199K Views</p>
-        </div>
-      </div>
-      {/* Side List Video-8  */}
-      <div className='side-video-list'>
-        <img
-          src={assets.thumbnail8}
-          alt='Thumbnail8'
-        />
-        <div className='vid-info'>
-          <h4>Best Channel That Help You To Be A Web Developer</h4>
-          <p>HassanTech</p>
-          <p>199K Views</p>
-        </div>
-      </div>
+      {apiData.map((item, index) => {
+        return (
+          <div
+            key={index}
+            className='side-video-list'
+          >
+            <img
+              src={item.snippet.thumbnails.medium.url}
+              alt='Thumbnail1'
+            />
+            <div className='vid-info'>
+              <h4>{item.snippet.title}</h4>
+              <p>{item.snippet.channelTitle}</p>
+              <p>{value_converter(item.statistics.viewCount)} Views</p>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };

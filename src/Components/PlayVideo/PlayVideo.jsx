@@ -9,7 +9,7 @@ const PlayVideo = ({ videoId }) => {
   const [apiData, setApiData] = useState(null);
   const [channelData, setChannelData] = useState(null);
   const [commentData, setCommentData] = useState([]);
-  console.log('🚀 ~ PlayVideo ~ commentData:', commentData);
+  // console.log('🚀 ~ PlayVideo ~ commentData:', commentData);
 
   // console.log('🚀 ~ PlayVideo ~ apiData:', apiData);
 
@@ -105,7 +105,11 @@ const PlayVideo = ({ videoId }) => {
       <hr />
       <div className='publisher'>
         <img
-          src={channelData ? channelData.snippet.thumbnails.default.url : ''}
+          src={
+            channelData
+              ? channelData.snippet.thumbnails.default.url
+              : 'Logo Image'
+          }
           alt='Logo Image'
         />
         <div className=''>
@@ -151,24 +155,22 @@ const PlayVideo = ({ videoId }) => {
                     ).fromNow()}
                   </span>
                 </h3>
-                <p>
-                  {item.snippet.topLevelComment.snippet.textDisplay}
-                  <div className='comment-action'>
-                    <img
-                      src={assets.like}
-                      alt=''
-                    />
-                    <span>
-                      {value_converter(
-                        item.snippet.topLevelComment.snippet.likeCount
-                      )}
-                    </span>
-                    <img
-                      src={assets.dislike}
-                      alt='DisLike Image'
-                    />
-                  </div>
-                </p>
+                <p>{item.snippet.topLevelComment.snippet.textDisplay}</p>
+                <div className='comment-action'>
+                  <img
+                    src={assets.like}
+                    alt=''
+                  />
+                  <span>
+                    {value_converter(
+                      item.snippet.topLevelComment.snippet.likeCount
+                    )}
+                  </span>
+                  <img
+                    src={assets.dislike}
+                    alt='DisLike Image'
+                  />
+                </div>
               </div>
             </div>
           );
