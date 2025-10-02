@@ -6,10 +6,10 @@ import { API_KEY, value_converter } from '../../data';
 import './Recommended.css';
 const Recommended = ({ categoryId }) => {
   const [apiData, setApiData] = useState([]);
-  console.log('🚀 ~ Recommended ~ apiData:', apiData);
+  // console.log('🚀 ~ Recommended ~ apiData:', apiData);
 
   const fetchData = async () => {
-    const relatedVideo_Url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=45&regionCode=US&videoCategoryId=${categoryId}&key=${API_KEY}`;
+    const relatedVideo_Url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=45&regionCode=GB&videoCategoryId=${categoryId}&key=${API_KEY}`;
     await fetch(relatedVideo_Url)
       .then((res) => res.json())
       .then((data) => setApiData(data.items));

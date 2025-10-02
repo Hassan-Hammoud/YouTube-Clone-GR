@@ -145,7 +145,11 @@ const PlayVideo = () => {
               className='comment'
             >
               <img
-                src={item.snippet.topLevelComment.snippet.authorProfileImageUrl}
+                src={
+                  item.snippet.topLevelComment.snippet.authorProfileImageUrl
+                    ? item.snippet.topLevelComment.snippet.authorProfileImageUrl
+                    : assets.user_profile
+                }
                 alt='UserImg'
               />
               <div className=''>
