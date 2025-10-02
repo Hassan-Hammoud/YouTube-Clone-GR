@@ -29,3 +29,25 @@
 .feed .card p {
   font-size: 14px;
 }
+
+/* ? MEDIA QUERIES */
+
+@media (max-width: 1024px) {
+  .feed .card h2 {
+    font-size: 28px;
+  }
+
+  .feed .card p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .feed .card h2 {
+    font-size: 24px;
+  }
+
+  .feed .card p {
+    font-size: 14px;
+  }
+}

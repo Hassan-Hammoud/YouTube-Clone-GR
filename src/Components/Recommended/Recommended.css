@@ -17,9 +17,24 @@
 
 .recommended .side-video-list .vid-info {
   flex-basis: 49%;
+  margin-left: 10px;
 }
 
 .recommended .side-video-list .vid-info h4 {
   font-size: 13px;
   margin-bottom: 5px;
+}
+
+/* MEDIA QUERIES  */
+
+@media (max-width: 900px) {
+  .recommended {
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 786px) {
+  .recommended .side-video-list .vid-info p {
+    font-size: 14px;
+  }
 }
