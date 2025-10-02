@@ -1,7 +1,8 @@
 /** @format */
 
-import './Navbar.css';
+import { Link } from 'react-router';
 import { assets } from '../../assets/assets';
+import './Navbar.css';
 const Navbar = ({ setSidebar }) => {
   return (
     <nav className='flex-div'>
@@ -12,11 +13,13 @@ const Navbar = ({ setSidebar }) => {
           alt='Menu Icon'
           onClick={() => setSidebar((perv) => (perv === false ? true : false))}
         />
-        <img
-          src={assets.logo}
-          alt=''
-          className='logo'
-        />
+        <Link to='/'>
+          <img
+            src={assets.logo}
+            alt=''
+            className='logo'
+          />
+        </Link>
       </div>
       <div className='nav-middle flex-div'>
         <div className='search-box flex-div'>

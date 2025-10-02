@@ -9,7 +9,7 @@ import { API_KEY, value_converter } from '../../data';
 import './Feed.css';
 const Feed = ({ category }) => {
   const [data, setData] = useState([]);
-  console.log('🚀 ~ fetchData ~ data:', data);
+  // console.log('🚀 ~ fetchData ~ data:', data);
   const fetchData = async () => {
     const videoList_Url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&videoCategoryId=${category}&key=${API_KEY}`;
     await fetch(videoList_Url)
