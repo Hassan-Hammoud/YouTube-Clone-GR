@@ -131,7 +131,7 @@ const PlayVideo = () => {
             ? apiData.snippet.description.slice(0, 250)
             : 'Description Here'}
         </p>
-        <p>Subscribe HassanTech To Watch More Tutorials On Web Development</p>
+        {/* <p>Subscribe HassanTech To Watch More Tutorials On Web Development</p> */}
         <hr />
         <h4>
           {apiData ? value_converter(apiData.statistics.commentCount) : 102}{' '}
